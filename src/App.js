@@ -31,16 +31,18 @@ const App = () => {
         <>
             <CssBaseline />
             <Header />
+            {/* List */}
             <Grid container spacing={3} style={{ width: '100%' }}>
                 <Grid item xs={12} md={4}>
                     <List places={places} />
                 </Grid>
+                {/* Google Map */}
                 <Grid item xs={12} md={8}>
                     <Map
                         setCoordinates={setCoordinates}
                         setBounds={setBounds}
-                        coordinates={coordinates} />
-
+                        coordinates={coordinates}
+                        places={places} />
                 </Grid>
             </Grid>
         </>

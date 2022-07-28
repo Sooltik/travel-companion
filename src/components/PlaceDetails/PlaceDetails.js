@@ -19,15 +19,20 @@ const PlaceDetails = ({ place }) => {
             <CardContent>
                 {/* Name Of Place */}
                 <Typography gutterBottom variant="h5">{place.name}</Typography>
+                {/* Rating */}
+                <Box display="flex" justifyContent="space-between">
+                    <Rating value={Number(place.rating)} readOnly />
+                    <Typography gutterBottom variant="subtitle2">out of {place.num_reviews} reviews</Typography>
+                </Box>
                 {/* Price */}
                 <Box display="flex" justifyContent="space-between">
                     <Typography variant="subtitle1">Price</Typography>
-                    <Typography variant="subtitle2">{place.price_level}</Typography>
+                    <Typography gutterBottom variant="subtitle2">{place.price_level}</Typography>
                 </Box>
-                {/* Rating */}
+                {/* Ranking */}
                 <Box display="flex" justifyContent="space-between">
                     <Typography variant="subtitle1">Rating</Typography>
-                    <Typography variant="subtitle2">{place.ranking}</Typography>
+                    <Typography gutterBottom variant="subtitle2">{place.ranking}</Typography>
                 </Box>
                 {/* Awards */}
                 {place?.awards?.map((award) => (
