@@ -11,7 +11,6 @@ const App = () => {
     const [filteredPlaces, setFilteredPlaces] = useState([])
     const [childClicked, setChildClicked] = useState(null)
 
-
     const [coordinates, setCoordinates] = useState({})
     const [bounds, setBounds] = useState({})
 
@@ -19,18 +18,21 @@ const App = () => {
     const [type, setType] = useState('restaurants')
     const [rating, setRating] = useState('')
 
+    // Load map's location with user's current location
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
             setCoordinates({ lat: latitude, lng: longitude })
         })
     }, [])
 
+    // Filter places when searching 
     useEffect(() => {
         const filteredPlaces = places.filter((place) => place.rating > rating)
 
         setFilteredPlaces(filteredPlaces)
     }, [rating])
 
+    // Display place on map
     useEffect(() => {
         if (bounds.sw && bounds.ne) {
             setIsLoading(true)

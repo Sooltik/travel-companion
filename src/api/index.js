@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// Maps JavaScript API from https://console.cloud.google.com/ 
 export const getPlacesData = async (type, sw, ne) => {
     try {
         const { data: { data } } = await axios.get(`https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`, {

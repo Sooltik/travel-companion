@@ -5,25 +5,31 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails'
 import useStyles from './styles'
 
 const List = ({ places, childClicked, isLoading, type, setType, rating, setRating }) => {
+    // Style
     const classes = useStyles()
 
-    const [elRefs, setElRefs] = useState([])
+    // Create Reference
+    const [elRefs, setElRefs] = useState([]) //elRefs = elemental references
 
-    // Scroll to card when clicked on map
+    // Scroll to list's card when place is clicked on map
     useEffect(() => {
         const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef())
         setElRefs(refs)
     }, [places])
-    
+
     return (
         <div className={classes.container}>
+            {/* Title of List */}
             <Typography variant='h4'>Restaurants, Hotels & Attractions around you</Typography>
+            {/* Loading symbol */}
             {isLoading ? (
                 <div className={classes.loading}>
                     <CircularProgress size="5rem" />
                 </div>
             ) : (
                 <>
+                    {/* List */}
+                    {/* Choose Type of Place to Display*/}
                     <FormControl className={classes.formControl}>
                         <InputLabel>Type</InputLabel>
                         <Select value={type} onChange={(e) => setType(e.target.value)}>
@@ -32,7 +38,7 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
                             <MenuItem value='attractions'>Attractions</MenuItem>
                         </Select>
                     </FormControl>
-
+                    {/* Choose Rating of Place to Display*/}
                     <FormControl className={classes.formControl}>
                         <InputLabel>Rating</InputLabel>
                         <Select value={rating} onChange={(e) => setRating(e.target.value)}>
@@ -42,6 +48,8 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
                             <MenuItem value={4.5}>Above 4.5</MenuItem>
                         </Select>
                     </FormControl>
+
+                    {/* Place's Card */}
                     <Grid container spacing={3} className={classes.list}>
                         {places?.map((place, i) => (
                             <Grid ref={elRefs[i]} item key={i} xs={12}>
@@ -51,7 +59,6 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
                                     refProp={elRefs[i]}
                                 />
                             </Grid>
-
                         ))}
                     </Grid>
                 </>
