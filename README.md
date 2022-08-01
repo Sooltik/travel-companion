@@ -10,3 +10,6 @@ The application has the following features:
     - Google Maps API with data filtering
     - Advanced React Best Practices such as folder & file structure, hooks and refs
     - A User Interface using Material UI
+
+### Live Demo
+See the live version: https://travel-companion-sultan.vercel.app/
